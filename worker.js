@@ -4,6 +4,7 @@ class Worker{
         this.surname = surname;
         this.hourRate = hourRate;
         this.hours = hours;
+        this.getSalary();
     }
     getSalary(){
         this.salary =  Number( this.hourRate) * Number(this.hours);
@@ -22,18 +23,26 @@ class Worker{
     getHours(){
         return this.hours;
     }
+    increaseSalary(){
+        this.hourRate = this.hourRate * 2;
+    }
+    setTax(percents){
+        this.tax = percents;
+    }
+    getSalaryNetto(){
+        return this.getSalary() -  Math.floor(this.getSalary() / percents * 100);
+    }
 }
 let workersArray  = [];
-for ( i = 0; i < 2; i++){
+for ( i = 0; i < 3; i++){
     let name = prompt('dati nume');
     let surname = prompt('dati prenume');
     let hourRate = prompt('dati salariu pe ora');
     let hours = prompt('dati nr de ore lucrate');
     let worker = new Worker(name, surname, hourRate, hours);
-    let salary = worker.getSalary();
     console.log(worker.name);
     console.log(worker.surname);
-    console.log( "Salariu " + salary );
+    console.log( "Salariu " + worker.salary );
     workersArray.push(worker);
 }
 console.log(workersArray);
